@@ -1,0 +1,151 @@
+* {
+  font-family: "JetBrains Mono Nerd Font", monospace;
+  font-size: 13px;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+window#waybar {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #000000;
+  margin: 8px 12px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+#network,
+#tray,
+#battery,
+#pulseaudio,
+#backlight,
+#custom-cpu,
+#custom-ram,
+#custom-brightness,
+#custom-player,
+#custom-date,
+#custom-time,
+#custom-play,
+#custom-next,
+#custom-gmail,
+#custom-translator,
+#custom-prev,
+#custom-poweroff {
+  padding: 4px 10px;
+  margin: 4px 2px;
+  border-radius: 6px;
+  background: rgba(137, 180, 250, 0.5);
+  color: #000000;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#custom-prev {
+  padding: 4px 12px 4px 8px;
+  margin-left: 6px;
+}
+
+#custom-poweroff {
+  padding: 4px 11px 4px 8px;
+  margin-right: 6px;
+}
+
+#network:hover,
+#tray:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-cpu:hover,
+#custom-ram:hover,
+#custom-brightness:hover,
+#custom-player:hover,
+#custom-date:hover,
+#custom-gmail:hover,
+#custom-translator:hover,
+#custom-time:hover,
+#custom-play:hover,
+#custom-next:hover,
+#custom-prev:hover,
+#custom-poweroff:hover,
+#pulseaudio-slider:hover,
+#backlight-slider:hover {
+  background: #45475a;
+  color: #cdd6f4;
+}
+
+#battery.critical {
+  background: #f38ba8;
+  color: #1e1e2e;
+}
+
+#pulseaudio-slider,
+#backlight-slider {
+  min-height: 6px;
+  min-width: 80px;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin: 4px 2px;
+  background: rgba(137, 180, 250, 0.5);
+  border: 1px solid #000000;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#pulseaudio-slider slider,
+#backlight-slider slider {
+  min-height: 8px;
+  margin: -3px;
+  min-width: 14px;
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #000000;
+}
+
+#pulseaudio-slider trough,
+#backlight-slider trough {
+  min-height: 8px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #000000;
+  padding: 0;
+  margin: 0;
+}
+
+#pulseaudio-slider highlight,
+#backlight-slider highlight {
+  background: rgba(137, 180, 250, 0.5);
+  border-radius: 10px;
+  border: 0px solid transparent;
+}
+
+#custom-gmail a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+#custom-translator a {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+#custom-ws1,
+#custom-ws2,
+#custom-ws3,
+#custom-ws4,
+#custom-ws5 {
+  padding: 4px 10px;
+  margin: 4px 2px;
+  border-radius: 6px;
+  background: rgba(137, 180, 250, 0.5);
+  color: #000000;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#custom-ws1.focused,
+#custom-ws2.focused,
+#custom-ws3.focused,
+#custom-ws4.focused,
+#custom-ws5.focused {
+  background: #89b4fa;
+  color: #1e1e2e;
+}

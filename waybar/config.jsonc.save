@@ -1,0 +1,47 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,                  // Главный параметр высоты
+  "spacing": 0,                  // Уменьшает промежутки между модулями
+  "margin-top": 0,               // Убирает внешние отступы
+  "margin-bottom": 0,  
+  "modules-left": ["custom/arch", "custom/player"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "battery", "tray"],
+  
+  "custom/arch": {
+  "format": "",
+  "tooltip": false
+  },
+
+"tray": {
+    "spacing": 5
+  },
+
+  "clock": {
+    "format": "{:%H:%M  %d.%m.%Y}"
+  },
+
+  "pulseaudio": {
+    "format": "  {volume} %"
+  },
+
+  "network": {
+    "format-wifi": " {essid} ({signalStrength}%)",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": " Нет сети"
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "custom/player": {
+    "format": "{}",
+    "exec": "bash -c 'playerctl metadata --format \"{{ title }} - {{ artist }}\" 2>/dev/null || echo \"Не играет\"'",
+    "return-type": "text",
+    "interval": 2,
+    "on-click": "playerctl play-pause"
+  }
+}

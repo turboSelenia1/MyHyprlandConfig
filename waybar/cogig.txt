@@ -1,0 +1,148 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "spacing": 0,
+  "margin-top": 2,
+  "margin-bottom": 0,
+  "margin-left": 3,
+  "margin-right": 3,
+  "modules-left": ["custom/prev", "custom/play", "custom/next", "custom/player", "custom/gmail", "custom/translator"],
+  "modules-center": ["custom/date", "custom/time"],
+  "modules-right": ["group/volume", "network", "battery", "custom/cpu", "custom/ram", "group/brightness", "tray", "custom/poweroff"],
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 5
+  },
+
+
+"custom/gmail": {
+  "exec": "echo ''",
+  "tooltip": "Gmail",
+  "on-click": "xdg-open https://mail.google.com"
+},
+"custom/translator": {
+  "exec": "echo 'RU'",
+  "tooltip": "Google Translate",
+  "on-click": "xdg-open https://translate.google.com"
+},
+
+
+ 
+  "custom/poweroff": {
+  "exec": "echo '⏻'",            
+  "on-click": "systemctl poweroff", 
+  "tooltip": "poweroff"
+},
+
+  "custom/date": {
+    "exec": "echo -e \" $(date +'%d.%m.%Y')\"",
+    "interval": 60,
+    "return-type": "text"
+  },
+
+  "custom/time": {
+    "exec": "echo -e \" $(date +'%H:%M')\"",
+    "interval": 10,
+    "return-type": "text"
+  },
+
+"group/volume": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 300,
+    "children-class": "not-power",
+    "transition-to-left": true,
+    "click-to-reveal": true
+  },
+  "modules": ["pulseaudio", "pulseaudio/slider"]
+},
+
+"group/brightness": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 300,
+    "children-class": "not-power",
+    "transition-to-left": true,
+    "click-to-reveal": true
+  },
+  "modules": ["custom/brightness", "backlight/slider"]
+},
+
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+     },
+
+"pulseaudio/slider": {
+  "min": 0,
+  "max": 100,
+  "rotate": 0,
+  "device": "pulseaudio",
+  "scroll-step": 1
+},
+
+"backlight/slider": {
+  "min": 1,
+  "max": 100,
+  "rotate": 0,
+  "on-change": "bash ~/.config/waybar/scripts/set-brightness.sh {}"
+},
+
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-disconnected": " "
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "custom/prev": {
+    "format": "",
+    "on-click": "playerctl previous"
+  },
+
+  "custom/play": {
+    "exec": "~/.config/waybar/scripts/play-toggle.sh",
+    "on-click": "playerctl play-pause",
+    "interval": 2,
+    "return-type": "text"
+  },
+
+  "custom/next": {
+    "format": "",
+    "on-click": "playerctl next"
+  },
+
+"custom/player": {
+  "exec": "~/.config/waybar/scripts/player-title.sh",
+  "return-type": "text",
+  "interval": 2,
+  "markup": "none"
+},
+
+   "custom/cpu": {
+     "exec": "bash -c \"top -bn1 | grep 'Cpu(s)' | awk '{print \\$2 + \\$4}' | xargs printf 'CPU: %.1f%%'\"",
+     "interval": 5,
+     "return-type": "text" 
+     },
+
+   "custom/ram": {
+     "exec": "free -m | awk '/^Mem:/ {printf \"RAM: %d%%\", $3*100/$2}'",
+     "interval": 5,
+     "return-type": "text"
+    },
+   
+    "custom/brightness": {
+      "exec": "echo -e \" $(bash -c 'val=$(brightnessctl get 2>/dev/null || echo 0); max=$(brightnessctl max 2>/dev/null || echo 1); echo $((val * 100 / max))%')\"",
+      "interval": 10,
+      "return-type": "text",
+     }
+
+
+
+}
